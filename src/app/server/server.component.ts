@@ -5,14 +5,21 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './server.component.html',
   styleUrls: ['./server.component.css']
 })
-export class ServerComponent implements OnInit {
+export class ServerComponent {
 // tslint:disable-next-line: no-inferrable-types
   serverId: number = 10;
   serverStatus: string = 'offline';
 
-  constructor() { }
+  constructor() {
+    this.serverStatus = Math.random() > 0.5 ? 'online' : 'offline';
+   }
 
-  ngOnInit() {
+  getServerStatus(){
+    return this.serverStatus;
+  }
+
+  getColor(){
+    return this.serverStatus === 'online' ? 'green' : 'red';
   }
 
 }
