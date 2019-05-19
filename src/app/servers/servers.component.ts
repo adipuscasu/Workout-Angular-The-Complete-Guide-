@@ -10,6 +10,9 @@ export class ServersComponent implements OnInit {
   serverName = '';
   serverCreationStatus = `No server was created!`;
   serverCreated = false;
+  servers = ['TestServer', 'TestServer 2'];
+  isParagraphVisible = false;
+  toggles = [];
 
 
   constructor() {
@@ -23,10 +26,20 @@ export class ServersComponent implements OnInit {
 
   onCreateServer() {
     this.serverCreated = true;
+    this.servers.push(this.serverName);
     this.serverCreationStatus = `Server was created  Name is ${this.serverName}!`;
   }
 
   onUpdateServerName(event: Event) {
     this.serverName = (event.target as HTMLInputElement).value;
+  }
+
+  toggleParagraphVisibility() {
+    this.isParagraphVisible = !this.isParagraphVisible;
+    this.toggles.push(this.toggles.length);
+  }
+
+  getParagraphBackground(paragraphToggle: number) {
+    return paragraphToggle > 4 ? 'blue' : '';
   }
 }
